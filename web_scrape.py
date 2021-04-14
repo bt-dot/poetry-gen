@@ -122,7 +122,7 @@ def special_print(verses):
         for lines in verse:
             for line in lines:
                 print('{:^100s}'.format(line))
-                os.system("say -v Alex " + line)
+                os.system("say -v Samantha -r 150 " + line)
         print("")
 
 
@@ -177,7 +177,6 @@ def gen(word, all_verses, number_of_verses):
         final.append(chosen)
         final_used.add(chosen[0][0])
         number_of_verses -= 1
-    print(final)
     special_print(final)
 
 
@@ -218,4 +217,4 @@ def main(word, number_of_verses):
     gen(word, all_verses, number_of_verses)
 
 
-main("sound", 2)
+main("nature", 2)
