@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 import re
 import spacy
 import random
-import os
+import pyttsx3
 
 scores = {}
 
@@ -117,11 +117,13 @@ def special_print(verses):
     Args:
         a structured text
     """
+    engine = pyttsx3.init()
     for verse in verses:
         for lines in verse:
             for line in lines:
                 print('{:^100s}'.format(line))
-                os.system("say -v Samantha -r 150 " + line)
+                engine.say(line)
+                engine.runAndWait()
         print("")
 
 

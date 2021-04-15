@@ -17,6 +17,8 @@ The rest of the project was mostly finding python libraries and experimenting wi
 
 This is when I gave up on generating completely new text, and I stumbled upon an article that uses the similarity function from the spacy library. Once I have identify this fitness function, I turned to genetic algorithms by utilize existing sentences to create new poems. This approach is a somewhat mere generation, but it's the best shot I've got to generating anything that looks like a poem. I parsed the text into verses of complete sentences and crossing-over sentences to form new verses, and it's evaluated by the similarity function from the spacy library. 
 
+Lastly, as for the text-to-speech feature, I used the pyttsx3 library because the default os one doesn't recognize a lot of the words and it would just skip a bunch of lines. 
+
 
 Papers and sources:
 1. https://www.researchgate.net/publication/313874773_NLP_based_Poetry_Analysis_and_Generation (Markov chains and keyword extraction)
