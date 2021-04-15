@@ -1,7 +1,7 @@
 """
 Authors: Bruce Tang
 CSCI 3725
-Last Edited: 2021-04-14
+Last Edited: 2021-04-15
 
 This system takes in a keyword and the number of verses desired to generates a poem.
 It web-scrapes netpoets.com by doing a search of the keyword and collects all poems
@@ -48,7 +48,6 @@ def open_poems(keyword):
         for link in links:
             html = requests.get(link).content
             soup = BeautifulSoup(html, 'html.parser')
-            # https://stackoverflow.com/questions/2602390/is-it-possible-for-beautifulsoup-to-work-in-a-case-insensitive-manner/2605635
             element = soup.find(class_=re.compile("^poemtext$", re.I))
             if element is not None:
                 body = element.getText()
