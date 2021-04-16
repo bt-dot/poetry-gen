@@ -1,7 +1,7 @@
 """
 Authors: Bruce Tang
 CSCI 3725
-Last Edited: 2021-04-15
+Last Edited: 2021-04-16
 
 This system takes in a keyword and the number of verses desired to generates a poem.
 It web-scrapes netpoets.com by doing a search of the keyword and collects all poems
@@ -113,7 +113,9 @@ def further_clean(verses):
 
 def special_print(verses):
     """
-    Center each line of the poem so it looks nice
+    Center each line of the poem so it looks nice, while reading the poem out loud.
+    pyttsx3 instead of the system default TTP is used because the default TTP doesn't 
+    recognize a lot of the words from the text generated
     Args:
         a structured text
     """
@@ -147,8 +149,11 @@ def fitness_check(keyword, all_verses):
 
 
 def gen(word, all_verses, number_of_verses):
+    '''
+    Generate a selection pool by crossing over complete sentences from each verse
+    Then return desire number of verses as the final output
+    '''
     fitness_check(word, all_verses)
-    all_verses.sort(key=lambda verse: scores.get(verse[0][0]))
     weight = []
     for verse in all_verses:
         weight.append(scores[verse[0][0]])
@@ -178,7 +183,7 @@ def gen(word, all_verses, number_of_verses):
         final.append(chosen)
         final_used.add(chosen[0][0])
         number_of_verses -= 1
-    special_print(final)
+    return final
 
 
 def crossover(verse1, verse2):
@@ -215,7 +220,8 @@ def crossover(verse1, verse2):
 def main(word, number_of_verses):
     text = open_poems(word)
     all_verses = clean(text)
-    gen(word, all_verses, number_of_verses)
+    final = gen(word, all_verses, number_of_verses)
+    special_print(final)
 
 
-main("nature", 2)
+main("spring", 2)
